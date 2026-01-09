@@ -233,7 +233,7 @@ tail -f /app/helix-ai.log  # or wherever --logFile is set
 
 ```bash
 # Clone
-git clone https://github.com/YOUR_USERNAME/helix-ai.git
+git clone https://github.com/tuanona/helix-ai.git
 cd helix-ai
 
 # Install dependencies
