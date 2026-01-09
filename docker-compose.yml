@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+  dev:
+    container_name: helix-ai_dev
+    env_file: .env
+    build:
+      dockerfile: ./Dockerfile
+    command: bash -c "sleep 999999s"
+    restart: unless-stopped
+    working_dir: /app
+    ports:
+      - 6499:6499
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+    volumes:
+      - ./:/app
+  build:
+    container_name: helix-ai_build
+    build:
+      dockerfile: ./Dockerfile
+    command: bash -c "bun install; bun run build:smol; bun run build:bin"
+    working_dir: /app
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+    volumes:
+      - ./:/app
